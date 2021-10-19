@@ -1,9 +1,10 @@
 import React from 'react'
+import { Drawer } from './components';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Drawer />
     </div>
   );
 }
