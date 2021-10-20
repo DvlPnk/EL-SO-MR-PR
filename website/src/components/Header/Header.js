@@ -1,10 +1,14 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Avatar  } from '@mui/material';
 import React from 'react'
 import { useStyles } from './style'
-import { Add } from "@material-ui/icons";
+import { Add, Apps } from "@material-ui/icons";
 
 const Header = ({children}) => {
   const classes = useStyles();
+  
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) =>  setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
@@ -21,7 +25,21 @@ const Header = ({children}) => {
           </div>
 
           <div className={classes.header__wrapper__right}>
-            <Add />
+            <Add onClick={handleClick} className= {classes.icon} />
+             <Apps className= {classes.icon} />
+               <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                >
+                 <MenuItem onClick={handleJoin}>Join Class</MenuItem>
+                 <MenuItem onClick={handleCreate}>Create Class</MenuItem>
+               </Menu>
+             <div>
+              <Avatar className= {classes.icon} />
+             </div>
           </div>
         </Toolbar>
       </AppBar>
