@@ -1,6 +1,6 @@
 import {createContext} from "react";
 const AddContext = createContext();
-export function useContext(){
+export function useLocalContext(){
   return useContext(AddContext);
 }
 
