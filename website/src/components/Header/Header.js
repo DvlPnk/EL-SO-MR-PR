@@ -43,6 +43,7 @@ const Header = ({children}) => {
           </div>
         </Toolbar>
       </AppBar>
+      <CreateClass />
     </div>
   )
 }
