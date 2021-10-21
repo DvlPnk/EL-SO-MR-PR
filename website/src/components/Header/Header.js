@@ -2,7 +2,6 @@ import { AppBar, Toolbar, Typography, Avatar, Menu } from '@material-ui/core';
 import React from 'react'
 import { useStyles } from './style'
 import { Add, Apps } from "@mui/icons-material"
-//import { Add, Apps } from "@material-ui/icons";
 import { MenuItem } from '@mui/material';
 import { CreateClass } from '..';
 import { useLocalContex } from '../../context/context';
