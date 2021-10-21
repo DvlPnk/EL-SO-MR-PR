@@ -1,4 +1,4 @@
-import React freom "react";
+import React from "react";
 import { useLocalContext } from "../../context/context";
 const CreateClass = () =>{
     const { createClassDialog, setCreateClassDialog } = useLocalContext();
@@ -8,7 +8,7 @@ const CreateClass = () =>{
     <div>
       <h1>Hello</h1>
     </div>
-    }}
+    }
     </>
    );
 };
