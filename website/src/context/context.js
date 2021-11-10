@@ -9,7 +9,12 @@ export function useLocalContex() {
 
 export function ContextProvider({ children }) {
   const [createClassDialog, setCreateClassDialog] = useState(false);
-  const value = { createClassDialog, setCreateClassDialog };
+  const [joinClassDialog, setJoinClassDialog] = useState(false);
+  const value = { createClassDialog, 
+                 setCreateClassDialog 
+                joinClassDialog,
+                 setJoinClassDialog,
+                };
   return <AddContext.Provider value={value}>{children}</AddContext.Provider>;
 }
 
