@@ -13,7 +13,7 @@ const Header = ({ children }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const { createClassDialog, setCreateClassDialog } = useLocalContex()
+  const { setCreateClassDialog } = useLocalContex()
 
   const handleCreate = () => {
     handleClose()
