@@ -1,4 +1,8 @@
-import { Dialog } from '@material-ui/core'
+import { Button,
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,} from '@material-ui/core'
 import React from 'react'
 import { useLocalContex } from '../../context/context'
 import "./style.css";
@@ -14,7 +18,13 @@ export const CreateClass = () => {
             onClose={() => setCreateClassDialog(false)}
             aria-labelledby="customized-dialog-title"
             open={createClassDialog}
+            maxWidth={showForm ? "lg" : "xs"}
+             className="form__dialog"
           >
+            {showForm ? (
+          <Form />
+           ) : (
+          <>
            <div className="class__title">
               Using Classroom at a school with students?
             </div>
