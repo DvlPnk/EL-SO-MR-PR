@@ -3,7 +3,9 @@ import React from 'react'
 import { useLocalContex } from '../../context/context'
 import "./style.css";
 export const CreateClass = () => {
-  const { createClassDialog, setCreateClassDialog } = useLocalContex()
+  const { createClassDialog, setCreateClassDialog } = useLocalContex();
+  const [check, setChecked] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   return (
     <>
       {createClassDialog &&
@@ -36,12 +38,33 @@ export const CreateClass = () => {
                 protections that are important in a school setting. Students
                 cannot use Google Classroom at a school with personal accounts.
               </p>
+               <div className="class__checkboxWrapper">
+                <Checkbox color="primary" onChange={() => setChecked(!check)} />
+                <p>
+                  I've read and understand the above notice, and I'm not using
+                  Classroom at a school with students
+                </p>
+              </div>
              </DialogContent>
+             <DialogActions>
+              <Button autoFocus onClick={() => setCreateClassDialog(false)}>
+                Close
+              </Button>
+
+              <Button
+                autoFocus
+                color="primary"
+                disabled={!check}
+                onClick={() => setShowForm(true)}
+              >
+                Continue
+              </Button>
+            </DialogActions>
+          </>
+        )}
           </Dialog>
         </div >
-      }
-    </>
-  )
-}
+  );
+};
 
 export default CreateClass;
