@@ -29,39 +29,28 @@ export const CreateClass = () => {
         ) : (
           <>
             <div className="class__title">
-              Using Classroom at a school with students?
+              Lee las reglas antes de continuar
             </div>
             <DialogContent className="class__content">
               <p classname="class__text">
-                <p>If so, your school must sign for a fee</p>
-                <a href="/help" className="class__link">
-                  G Suite for Education
-                </a>
-                account before you can use Classroom
-                <a href="/learn" className="class__link2">
-                  Learn More.
-                </a>
-              </p>
-              <p>
-                G Suite for Education lets schools decide which Google services
-                their students can use, and provides additional
-                <a href="/privacy" className="class__link2 class__link">
-                  privacy and security
-                </a>
-                protections that are important in a school setting. Students
-                cannot use Google Classroom at a school with personal accounts.
+                <p>Al crear una sala estas totalmente comprometido
+                  a administarla desde sus inicios de la clase hasta
+                  el fin de la misma. Así como tambien establecer un orden
+                  entre los diversos estudiantes pertenecientes al cursor
+                  para el correcto desarrollo de la clase
+                </p>
               </p>
               <div className="class__checkboxWrapper">
                 <Checkbox color="primary" onChange={() => setChecked(!check)} />
                 <p>
-                  I've read and understand the above notice, and I'm not using
-                  Classroom at a school with students
+                  He leido y comprendido el texto anterior, y me comprometo
+                  a seguir las reglas establecidas
                 </p>
               </div>
             </DialogContent>
             <DialogActions>
               <Button autoFocus onClick={() => setCreateClassDialog(false)}>
-                Close
+                Cerrar
               </Button>
 
               <Button
@@ -70,7 +59,7 @@ export const CreateClass = () => {
                 disabled={!check}
                 onClick={() => setShowForm(true)}
               >
-                Continue
+                Continuar
               </Button>
             </DialogActions>
           </>

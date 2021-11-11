@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useLocalContex } from "../../context/context";
-//import { v4 as uuidV4 } from "uuid";
 import { Button, DialogActions, TextField } from "@mui/material";
-//import db from "../../lib/firebase";
 
 const Form = () => {
   const [className, setClassName] = useState("");
@@ -10,35 +8,15 @@ const Form = () => {
   const [Room, setRoom] = useState("");
   const [Subject, setSubject] = useState("");
 
-  const { /*loggedInMail,*/ setCreateClassDialog } = useLocalContex();
-  /*
-    const addClass = (e) => {
-      e.preventDefault();
-      const id = uuidV4();
-  
-      db.collection("CreatedClasses")
-        .doc(loggedInMail)
-        .collection("classes")
-        .doc(id)
-        .set({
-          owner: loggedInMail,
-          className: className,
-          section: Section,
-          room: Room,
-          id: id,
-        })
-        .then(() => {
-          setCreateClassDialog(false);
-        });
-    };*/
+  const { setCreateClassDialog } = useLocalContex();
   return (
     <div className="form">
-      <p className="class__title">Create Class</p>
+      <p className="class__title">Crear Clase</p>
 
       <div className="form__inputs">
         <TextField
           id="filled-basic"
-          label="Class Name (required)"
+          label="Nombre de la clase (requerido)"
           className="form__input"
           variant="filled"
           value={className}
@@ -46,7 +24,7 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Section"
+          label="Sección"
           className="form__input"
           variant="filled"
           value={Section}
@@ -54,7 +32,7 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Subject"
+          label="Curso"
           className="form__input"
           variant="filled"
           value={Subject}
@@ -62,7 +40,7 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Room"
+          label="Sala"
           className="form__input"
           variant="filled"
           value={Room}
@@ -71,7 +49,7 @@ const Form = () => {
       </div>
       <DialogActions>
         <Button /*onClick={addClass}*/ color="primary">
-          Create
+          Crear
         </Button>
       </DialogActions>
     </div>

@@ -31,7 +31,7 @@ const Header = ({ children }) => {
           <div className={classes.headerWrapper}>
             {children}
             <Typography variant="h6" className={classes.title}>
-              Classroom
+              Salón de Clase
             </Typography>
           </div>
 
@@ -45,8 +45,8 @@ const Header = ({ children }) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleJoin}>Join Class</MenuItem>
-              <MenuItem onClick={handleCreate}>Create Class</MenuItem>
+              <MenuItem onClick={handleJoin}>Entrar a Clase</MenuItem>
+              <MenuItem onClick={handleCreate}>Crear Clase</MenuItem>
             </Menu>
             <div>
               <Avatar className={classes.icon} />

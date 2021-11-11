@@ -27,49 +27,49 @@ const JoinClass = () => {
               onClick={() => setJoinClassDialog(false)}
             >
               <Close className="joinClass__svg" />
-              <div className="joinClass__topHead">Join Class</div>
+              <div className="joinClass__topHead">Entrar a Clase</div>
             </div>
             <Button
               className="joinClass__btn"
               variant="contained"
               color="primary"
             >
-              Join
+              Entrar
             </Button>
           </div>
           <div className="joinClass__form">
             <p className="joinClass__formText">
-              You're currently signed in as Logged in mail
+              Estas actualmente conectado a una cuenta
             </p>
             <div className="joinClass_loginInfo">
               <div className="joinClass_classLeft">
                 <Avatar />
                 <div className="joinClass__loginText">
-                  <div className="joinClass__loginName">Pulkit</div>
+                  <div className="joinClass__loginName">Pierre</div>
                   <div className="joinClass__loginEmail">Mail</div>
                 </div>
                 <Button variant="outlined" color="primary">
-                  Logout
+                  Cerrar sesión
                 </Button>
               </div>
             </div>
           </div>
           <div className="joinClass__form">
             <div style={{ fontSize: '1.25rem', color: "#3c4043" }} className="joinClass__formText">
-              ClassCode
+              Código de Clase
             </div>
             <div style={{ color: "#3c4043", marginTop: "-5px" }} className="joinClass__formText">
-              Ask your teacher for class code, then enter ir here
+              Pregúntale a tu profesor por el código de clase, luego ingrésalo aquí
             </div>
             <div className="joinClass__loginInfo">
               <TextField
                 id="outlined-basic"
-                label="Class Code"
+                label="Codigo de Clase"
                 variant="outlined"
               />
               <TextField
                 id="outlined-basic"
-                label="Owner's email"
+                label="Email del propietario"
                 variant="outlined"
               />
             </div>
