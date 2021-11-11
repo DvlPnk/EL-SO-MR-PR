@@ -1,9 +1,8 @@
-import { AppBar, Toolbar, Typography, Avatar, Menu } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Avatar, Menu, MenuItem } from '@material-ui/core';
 import React from 'react'
 import { useStyles } from './style'
-import { Add, Apps } from "@mui/icons-material"
-import { MenuItem } from '@mui/material';
-import { CreateClass } from '..';
+import { Add, Apps } from "@material-ui/icons"
+import { CreateClass, JoinClass } from '..';
 import { useLocalContex } from '../../context/context';
 
 const Header = ({ children }) => {
@@ -13,11 +12,16 @@ const Header = ({ children }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const { setCreateClassDialog } = useLocalContex()
+  const { setCreateClassDialog, setJoinClassDialog } = useLocalContex();
 
   const handleCreate = () => {
-    handleClose()
-    setCreateClassDialog(true)
+    handleClose();
+    setCreateClassDialog(true);
+  };
+
+  const handleJoin = () => {
+    handleClose();
+    setJoinClassDialog(true);
   }
 
   return (
@@ -41,7 +45,7 @@ const Header = ({ children }) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem >Join Class</MenuItem>
+              <MenuItem onClick={handleJoin}>Join Class</MenuItem>
               <MenuItem onClick={handleCreate}>Create Class</MenuItem>
             </Menu>
             <div>
@@ -51,6 +55,7 @@ const Header = ({ children }) => {
         </Toolbar>
       </AppBar>
       <CreateClass />
+      <JoinClass />
     </div >
   )
 }
