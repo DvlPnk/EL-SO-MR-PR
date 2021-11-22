@@ -1,11 +1,18 @@
-import React from 'react'
-import { Drawer } from './components';
-
+import React, { useEffect, useState } from "react";
+import { Drawer, Login} from "./components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <Drawer />
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path='/'>
+          <Drawer />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

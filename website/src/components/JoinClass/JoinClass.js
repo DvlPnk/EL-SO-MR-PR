@@ -2,7 +2,7 @@
 import { Close } from '@mui/icons-material';
 import { Button, Dialog, Slide } from '@mui/material';
 import React from 'react'
-import { useLocalContex } from '../../context/context'
+import { useLocalContext } from '../../context/context'
 import { Avatar, TextField } from "@material-ui/core"
 import "./style.css";
 
@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const JoinClass = () => {
-  const { joinClassDialog, setJoinClassDialog } = useLocalContex();
+  const { joinClassDialog, setJoinClassDialog } = useLocalContext();
   return (
     <div>
       <Dialog

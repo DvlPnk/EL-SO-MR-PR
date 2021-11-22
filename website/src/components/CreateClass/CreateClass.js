@@ -6,13 +6,13 @@ import {
   DialogContent,
 } from "@mui/material";
 import React from 'react'
-import { useLocalContex } from '../../context/context'
+import { useLocalContext } from '../../context/context'
 import "./style.css";
 import { useState } from 'react'
 import Form from "./Form"
 
 export const CreateClass = () => {
-  const { createClassDialog, setCreateClassDialog } = useLocalContex();
+  const { createClassDialog, setCreateClassDialog } = useLocalContext();
   const [check, setChecked] = useState(false);
   const [showForm, setShowForm] = useState(false);
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocalContex } from "../../context/context";
+import { useLocalContext } from "../../context/context";
 import { Button, DialogActions, TextField } from "@mui/material";
 
 const Form = () => {
@@ -8,7 +8,7 @@ const Form = () => {
   const [Room, setRoom] = useState("");
   const [Subject, setSubject] = useState("");
 
-  const { setCreateClassDialog } = useLocalContex();
+  const { setCreateClassDialog } = useLocalContext();
   return (
     <div className="form">
       <p className="class__title">Crear Clase</p>
@@ -24,18 +24,18 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Nombre del curso"
-          className="form__input"
-          variant="filled"
-          value={Subject}
-          onChange={(e) => setSection(e.target.value)}
-        />
-        <TextField
-          id="filled-basic"
           label="Sección"
           className="form__input"
           variant="filled"
           value={Section}
+          onChange={(e) => setSection(e.target.value)}
+        />
+        <TextField
+          id="filled-basic"
+          label="Nombre del curso"
+          className="form__input"
+          variant="filled"
+          value={Subject}
           onChange={(e) => setSubject(e.target.value)}
         />
         <TextField

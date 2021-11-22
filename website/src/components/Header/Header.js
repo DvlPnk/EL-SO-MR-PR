@@ -3,7 +3,7 @@ import React from 'react'
 import { useStyles } from './style'
 import { Add, Apps } from "@material-ui/icons"
 import { CreateClass, JoinClass } from '..';
-import { useLocalContex } from '../../context/context';
+import { useLocalContext } from '../../context/context';
 
 const Header = ({ children }) => {
   const classes = useStyles();
@@ -12,7 +12,7 @@ const Header = ({ children }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const { setCreateClassDialog, setJoinClassDialog } = useLocalContex();
+  const { setCreateClassDialog, setJoinClassDialog } = useLocalContext();
 
   const handleCreate = () => {
     handleClose();
