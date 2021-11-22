@@ -1,5 +1,5 @@
 interface Auth {
   email: string;
-  password: string;
-  token: string;
+  password: string | undefined;
+  token: string | undefined;
 }
