@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Drawer, Login} from "./components";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Drawer, Login } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Routes>
+      <Switch>
         <Route exact path='/'>
           <Drawer />
         </Route>
         <Route path='/login'>
           <Login />
         </Route>
-      </Routes>
+      </Switch>
     </Router>
   );
 }
