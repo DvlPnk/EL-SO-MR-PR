@@ -16,7 +16,7 @@ const Form = () => {
       <div className="form__inputs">
         <TextField
           id="filled-basic"
-          label="Nombre de la clase (requerido)"
+          label="Codigo de clase (requerido)"
           className="form__input"
           variant="filled"
           value={className}
@@ -24,18 +24,18 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Sección"
+          label="Nombre del curso"
           className="form__input"
           variant="filled"
-          value={Section}
+          value={Subject}
           onChange={(e) => setSection(e.target.value)}
         />
         <TextField
           id="filled-basic"
-          label="Curso"
+          label="Sección"
           className="form__input"
           variant="filled"
-          value={Subject}
+          value={Section}
           onChange={(e) => setSubject(e.target.value)}
         />
         <TextField
