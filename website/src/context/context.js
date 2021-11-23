@@ -1,5 +1,5 @@
-import { useContext, useState, createContext, provider, useEffect } from 'react';
-import { auth } from '../lib/firebase';
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth, provider } from "../lib/firebase";
 
 const AddContext = createContext();
 
@@ -10,11 +10,12 @@ export function useLocalContext() {
 export function ContextProvider({ children }) {
   const [createClassDialog, setCreateClassDialog] = useState(false);
   const [joinClassDialog, setJoinClassDialog] = useState(false);
-  const [loggedInUser,setLoggedInUser] = useState(null);
-  const [loggedInMail,setLoggedInMail] = useState(null);
-  const login = () => {
-      auth.signInWithPopup(provider);
-  };
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInMail, setLoggedInMail] = useState(null);
+
+  const login = () => auth.signInWithPopup(provider);
+
+  const logout = () => auth.signOut();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -25,11 +26,9 @@ export function ContextProvider({ children }) {
         setLoggedInMail(null);
         setLoggedInUser(null);
       }
-  });
+    });
 
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
   const value = {
     createClassDialog,
@@ -37,9 +36,11 @@ export function ContextProvider({ children }) {
     joinClassDialog,
     setJoinClassDialog,
     login,
+    logout,
     loggedInMail,
     loggedInUser,
   };
+
   return <AddContext.Provider value={value}>{children}</AddContext.Provider>;
 }
 
