@@ -37,8 +37,8 @@ export function ContextProvider({ children }) {
     joinClassDialog,
     setJoinClassDialog,
     login,
-    loggedInUser,
     loggedInMail,
+    loggedInUser,
   };
   return <AddContext.Provider value={value}>{children}</AddContext.Provider>;
 }
