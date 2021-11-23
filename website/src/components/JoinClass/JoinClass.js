@@ -1,10 +1,11 @@
 //import { Button, Dialog, Slide } from '@material-ui/core';
 import { Close } from '@mui/icons-material';
 import { Button, Dialog, Slide } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocalContext } from '../../context/context'
 import { Avatar, TextField } from "@material-ui/core"
 import "./style.css";
+import db from "../../lib/firebase";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -16,7 +17,47 @@ const JoinClass = () => {
     setJoinClassDialog, 
     loggedInUser, 
   } = useLocalContext();
-  console.log(loggedInUser);
+
+  const [classCode, setClassCode] = useState("");
+  const [email, setemail] = useState("");
+  const [error, setError] = useState();
+  const [joinedData, setJoinedData] = useState();
+  const [classExists, setClassExists] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    db.collection("CreatedClasses")
+      .doc(email)
+      .collection("classes")
+      .doc(classCode)
+      .get()
+      .then((doc) => {
+        if (doc.exists && doc.owner !== loggedInUser.email) {
+          setClassExists(true);
+          setJoinedData(doc.data());
+          setError(false);
+        } else {
+          setError(true);
+          setClassExists(false);
+          return;
+        }
+      });
+
+    if (classExists === true) {
+      db.collection("JoinedClasses")
+        .doc(loggedInUser.email)
+        .collection("classes")
+        .doc(classCode)
+        .set({
+          joinedData,
+        })
+        .then(() => {
+          setJoinClassDialog(false);
+        });
+    }
+  };
+
   return (
     <div>
       <Dialog
@@ -38,6 +79,7 @@ const JoinClass = () => {
               className="joinClass__btn"
               variant="contained"
               color="primary"
+              onClick={handleSubmit}
             >
               Entrar
             </Button>
@@ -75,11 +117,17 @@ const JoinClass = () => {
                 id="outlined-basic"
                 label="Codigo de Clase"
                 variant="outlined"
+                value={classCode}
+                onChange={(e) => setClassCode(e.target.value)}
+                error={error}
+                helperText={error && "No se encontro la clase"}
               />
               <TextField
                 id="outlined-basic"
                 label="Email del propietario"
                 variant="outlined"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
               />
             </div>
           </div>

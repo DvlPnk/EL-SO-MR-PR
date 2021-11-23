@@ -3,8 +3,42 @@ import { Drawer, Login } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useLocalContext } from "./context/context";
 import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
+import db from "./lib/firebase";
+
 function App() {
   const { loggedInMail } = useLocalContext();
+  
+  const [createdClasses, setCreatedClasses] = useState([]);
+  const [joinedClasses, setJoinedClasses] = useState([]);
+
+  useEffect(() => {
+    if (loggedInMail) {
+      let unsubscribe = db
+        .collection("CreatedClasses")
+        .doc(loggedInMail)
+        .collection("classes")
+        .onSnapshot((snapshot) => {
+          setCreatedClasses(snapshot.docs.map((doc) => doc.data()));
+        });
+      return () => unsubscribe();
+    }
+  }, [loggedInMail]);
+
+  useEffect(() => {
+    if (loggedInMail) {
+      let unsubscribe = db
+        .collection("JoinedClasses")
+        .doc(loggedInMail)
+        .collection("classes")
+        .onSnapshot((snapshot) => {
+          setJoinedClasses(snapshot.docs.map((doc) => doc.data().joinedData));
+        });
+
+      return () => unsubscribe();
+    }
+  }, [loggedInMail]);
+  
+
   return (
     <Router>
       <Switch>
