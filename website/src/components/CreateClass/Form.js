@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLocalContext } from "../../context/context";
 import { Button, DialogActions, TextField } from "@mui/material";
+import {v4 as uuidV4} from 'uuid';
+import db from "../../lib/firebase";
 
 const Form = () => {
   const [className, setClassName] = useState("");
@@ -8,7 +10,27 @@ const Form = () => {
   const [Room, setRoom] = useState("");
   const [Subject, setSubject] = useState("");
 
-  const { setCreateClassDialog } = useLocalContext();
+  const { loggedInMail, setCreateClassDialog } = useLocalContext();
+ 
+  const addClass =(e)=>{
+    e.preventDefault();
+    const id = uuidV4();
+
+    db.collection("CreatedClasses")
+      .doc(loggedInMail)
+      .collection("classes")
+      .doc(id)
+      .set({
+        owner: loggedInMail,
+        className: className,
+        section: Section,
+        room: Room,
+        id: id,
+      })
+      .then(() => {
+        setCreateClassDialog(false);
+      });
+  }
   return (
     <div className="form">
       <p className="class__title">Crear Clase</p>
@@ -48,7 +70,7 @@ const Form = () => {
         />
       </div>
       <DialogActions>
-        <Button /*onClick={addClass}*/ color="primary">
+        <Button onClick={addClass} color="primary">
           Crear
         </Button>
       </DialogActions>

@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Drawer, Login } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useLocalContext } from "./context/context";
+import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
 function App() {
-  const {loggedInMail} = useLocalContext();
+  const { loggedInMail } = useLocalContext();
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Drawer />
-        </Route>
-        <Route path="/login">
+        <IsUserRedirect
+          user={loggedInMail}
+          loggedInPath="/"
+          path="/signin"
+          exact
+        >
           <Login />
-        </Route>
+        </IsUserRedirect>
+
+        <ProtectedRoute user={loggedInMail} path="/" exact>
+          <Drawer />
+        </ProtectedRoute>
       </Switch>
     </Router>
   );

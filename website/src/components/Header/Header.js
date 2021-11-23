@@ -12,7 +12,11 @@ const Header = ({ children }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const { setCreateClassDialog, setJoinClassDialog } = useLocalContext();
+  const { 
+    setCreateClassDialog,
+    setJoinClassDialog,
+    loggedInUser,logout
+  } = useLocalContext();
 
   const handleCreate = () => {
     handleClose();
@@ -49,7 +53,10 @@ const Header = ({ children }) => {
               <MenuItem onClick={handleCreate}>Crear Clase</MenuItem>
             </Menu>
             <div>
-              <Avatar className={classes.icon} />
+              <Avatar 
+                onClick={() => logout()} 
+                src={loggedInUser?.photoURL} 
+                className={classes.icon} />
             </div>
           </div>
         </Toolbar>
