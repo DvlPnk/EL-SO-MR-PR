@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Drawer, Login } from "./components";
+import { Drawer,JoinedClasses, Login,Main } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useLocalContext } from "./context/context";
 import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
@@ -42,6 +42,18 @@ function App() {
   return (
     <Router>
       <Switch>
+    {createdClasses.map((item, index) => (
+          <Route key={index} exact path={`/${item.id}`}>
+            <Drawer />
+            <Main classData={item} />
+          </Route>
+        ))}
+        {joinedClasses.map((item, index) => (
+          <Route key={index} exact path={`/${item.id}`}>
+            <Drawer />
+            <Main classData={item} />
+          </Route>
+        ))}
         <IsUserRedirect
           user={loggedInMail}
           loggedInPath="/"
@@ -53,6 +65,15 @@ function App() {
 
         <ProtectedRoute user={loggedInMail} path="/" exact>
           <Drawer />
+          <ol className="joined">
+            {createdClasses.map((item) => (
+              <JoinedClasses classData={item} />
+            ))}
+
+            {joinedClasses.map((item) => (
+              <JoinedClasses classData={item} />
+            ))}
+          </ol>
         </ProtectedRoute>
       </Switch>
     </Router>
