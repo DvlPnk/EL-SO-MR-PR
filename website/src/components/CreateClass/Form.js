@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocalContext } from "../../context/context";
 import { Button, DialogActions, TextField } from "@mui/material";
-import {v4 as uuidV4} from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 import db from "../../lib/firebase";
 
 const Form = () => {
@@ -11,8 +11,8 @@ const Form = () => {
   const [Subject, setSubject] = useState("");
 
   const { loggedInMail, setCreateClassDialog } = useLocalContext();
- 
-  const addClass =(e)=>{
+
+  const addClass = (e) => {
     e.preventDefault();
     const id = uuidV4();
 
@@ -38,7 +38,7 @@ const Form = () => {
       <div className="form__inputs">
         <TextField
           id="filled-basic"
-          label="Codigo de clase (requerido)"
+          label="Nombre del curso(requerido)"
           className="form__input"
           variant="filled"
           value={className}
@@ -54,7 +54,7 @@ const Form = () => {
         />
         <TextField
           id="filled-basic"
-          label="Nombre del curso"
+          label="Código del curso"
           className="form__input"
           variant="filled"
           value={Subject}

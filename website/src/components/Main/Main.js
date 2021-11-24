@@ -1,10 +1,11 @@
-import { Avatar, Button, TextField } from "@material-ui/core";
+import { Avatar, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core/index";
 import React, { useState } from "react";
 import db, { storage } from "../../lib/firebase";
 import "./style.css";
 import firebase from "firebase";
 import { useLocalContext } from "../../context/context";
-import { Announcment } from "..";
+//import { Announcment } from "..";
 const Main = ({ classData }) => {
   const { loggedInMail } = useLocalContext();
 
@@ -55,7 +56,7 @@ const Main = ({ classData }) => {
                 {classData.section}
               </div>
               <div className="main__wrapper2">
-                <em className="main__code">Class Code :</em>
+                <em className="main__code">Codigo de clase:</em>
                 <div className="main__id">{classData.id}</div>
               </div>
             </div>
@@ -64,7 +65,7 @@ const Main = ({ classData }) => {
         <div className="main__announce">
           <div className="main__status">
             <p>Upcoming</p>
-            <p className="main__subText">No work due</p>
+            <p className="main__subText">No tienes trabajos pendientes</p>
           </div>
           <div className="main__announcements">
             <div className="main__announcementsWrapper">
@@ -74,7 +75,7 @@ const Main = ({ classData }) => {
                     <TextField
                       id="filled-multiline-flexible"
                       multiline
-                      label="Announce Something to class"
+                      label="Realiza un anuncio a la clase"
                       variant="filled"
                       value={inputValue}
                       onChange={(e) => setInput(e.target.value)}
@@ -89,15 +90,15 @@ const Main = ({ classData }) => {
 
                       <div>
                         <Button onClick={() => setShowInput(false)}>
-                          Cancel
+                          Cancelar
                         </Button>
 
                         <Button
-                          onClick={handleUpload}
+                          /*onClick={handleUpload}*/
                           color="primary"
                           variant="contained"
                         >
-                          Post
+                          Enviar
                         </Button>
                       </div>
                     </div>
@@ -113,7 +114,7 @@ const Main = ({ classData }) => {
                 )}
               </div>
             </div>
-            <Announcment classData={classData} />
+            {/* <Announcment classData={classData} /> */}
           </div>
         </div>
       </div>
