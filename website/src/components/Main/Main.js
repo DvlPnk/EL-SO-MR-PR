@@ -109,7 +109,7 @@ const Main = ({ classData }) => {
                     onClick={() => setShowInput(true)}
                   >
                     <Avatar />
-                    <div>Announce Something to class</div>
+                    <div>Realiza un anuncio a la clase</div>
                   </div>
                 )}
               </div>

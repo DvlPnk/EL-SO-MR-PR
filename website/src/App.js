@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Drawer,JoinedClasses, Login,Main } from "./components";
+import { Drawer, JoinedClasses, Login, Main } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useLocalContext } from "./context/context";
 import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
+import Theme from "./assets/Themes";
 import db from "./lib/firebase";
 
 function App() {
   const { loggedInMail } = useLocalContext();
-  
+  const [colors, setColors] = useState(null);
   const [createdClasses, setCreatedClasses] = useState([]);
   const [joinedClasses, setJoinedClasses] = useState([]);
-
+  useEffect(() => {
+    if (!localStorage.getItem("palette")) {
+      localStorage.setItem("palette", "Light");
+    }
+    setColors(Theme(localStorage.getItem("palette")))
+  }, []);
   useEffect(() => {
     if (loggedInMail) {
       let unsubscribe = db
@@ -37,12 +43,15 @@ function App() {
       return () => unsubscribe();
     }
   }, [loggedInMail]);
-  
 
-  return (
+
+  return (colors ? (<div style={{
+    background: colors.background_color, minHeight: "100vh"
+  }
+  }>
     <Router>
       <Switch>
-    {createdClasses.map((item, index) => (
+        {createdClasses.map((item, index) => (
           <Route key={index} exact path={`/${item.id}`}>
             <Drawer />
             <Main classData={item} />
@@ -77,7 +86,7 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </Router>
-  );
+  </div >) : <div>Cargando2</div>);
 }
 
 export default App;

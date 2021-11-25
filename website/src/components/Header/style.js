@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: "1.38rem",
-    color: "#5f6368",
+    color: "#051014",
     marginLeft: "5px",
     cursor: "pointer",
   },
@@ -34,7 +34,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   icon: {
     marginRight: "15px",
-    color: "#5f6368",
+    color: "#051014",
     cursor: "pointer",
   },
 }));
