@@ -1,6 +1,6 @@
 //import { Button, Dialog, Slide } from '@material-ui/core';
 import { Close } from '@mui/icons-material';
-import { Button, Dialog, Slide } from '@mui/material';
+import { Button, Dialog, Slide } from '@material-ui/core';
 import React, { useState } from 'react'
 import { useLocalContext } from '../../context/context'
 import { Avatar, TextField } from "@material-ui/core"
@@ -12,10 +12,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const JoinClass = () => {
-  const { 
-    joinClassDialog, 
-    setJoinClassDialog, 
-    loggedInUser, 
+  const {
+    joinClassDialog,
+    setJoinClassDialog,
+    loggedInUser,
   } = useLocalContext();
 
   const [classCode, setClassCode] = useState("");
@@ -90,7 +90,7 @@ const JoinClass = () => {
             </p>
             <div className="joinClass_loginInfo">
               <div className="joinClass_classLeft">
-                <Avatar src={loggedInUser?.photoURL}/>
+                <Avatar src={loggedInUser?.photoURL} />
                 <div className="joinClass__loginText">
                   <div className="joinClass__loginName">
                     {loggedInUser?.displayName}
@@ -99,9 +99,9 @@ const JoinClass = () => {
                     {loggedInUser?.email}
                   </div>
                 </div>
-                <Button variant="outlined" color="primary">
+                {/* <Button variant="outlined" color="primary">
                   Cerrar sesión
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
