@@ -9,7 +9,7 @@ const JoinedClasses = ({ classData }) => {
       <div className="joined__wrapper">
         <div className="joined__container">
           <div className="joined__imgWrapper" />
-          {/* <div className="joined__image" /> */}
+          <div className="joined__image" />
           <div className="joined__content">
             <Link className="joined__title" to={`/${classData.id}`}>
               <h2>{classData.className}</h2>

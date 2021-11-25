@@ -89,12 +89,12 @@ const Main = ({ classData }) => {
                       />
 
                       <div>
-                        <Button onClick={() => setShowInput(false)}>
+                        <Button onClick={() => { setShowInput(false); setInput("") }}>
                           Cancelar
                         </Button>
 
                         <Button
-                          /*onClick={handleUpload}*/
+                          /*onClick={handleChange}*/
                           color="primary"
                           variant="contained"
                         >
@@ -118,7 +118,7 @@ const Main = ({ classData }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
