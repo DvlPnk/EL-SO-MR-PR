@@ -5,7 +5,6 @@ import db, { storage } from "../../lib/firebase";
 import "./style.css";
 import firebase from "firebase";
 import { useLocalContext } from "../../context/context";
-//import { Announcment } from "..";
 const Main = ({ classData }) => {
   const { loggedInMail } = useLocalContext();
 
@@ -114,7 +113,6 @@ const Main = ({ classData }) => {
                 )}
               </div>
             </div>
-            {/* <Announcment classData={classData} /> */}
           </div>
         </div>
       </div>

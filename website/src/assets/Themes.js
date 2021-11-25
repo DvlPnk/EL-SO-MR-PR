@@ -1,16 +1,18 @@
 const colors = {
   DarkTheme: {
     background_color: "#051014",
-    header_color: "",
+    header_color: "#00BDD4",
     words_color: "#000000",
   },
   ColorBlind: {
-    background_color: "red",
+    background_color: "#0B3954",
     words_color: "#000000",
+    header_color: "#FFE66D"
   },
   LightTheme: {
     background_color: "#FFFFFF",
     words_color: "#000000",
+    header_color: "#00BDD4"
   }
 }
 

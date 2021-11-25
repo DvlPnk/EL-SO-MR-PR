@@ -1,4 +1,9 @@
 import { makeStyles } from "@material-ui/core";
+import Theme from "../../assets/Themes"
+
+const colors = Theme(localStorage.getItem("palette"))
+
+console.log(colors)
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +20,7 @@ export const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   appBar: {
-    backgroundColor: "#00BDD4",
+    backgroundColor: colors.header_color,
     color: "black",
   },
   toolbar: {
