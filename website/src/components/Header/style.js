@@ -3,8 +3,6 @@ import Theme from "../../assets/Themes"
 
 const colors = Theme(localStorage.getItem("palette"))
 
-console.log(colors)
-
 export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
