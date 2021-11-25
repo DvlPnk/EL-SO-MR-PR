@@ -18,27 +18,6 @@ const Main = ({ classData }) => {
     }
   };
 
-  const handleUpload = () => {
-    const uploadImage = storage.ref(`images/${image.name}`).put(image);
-
-    uploadImage.on("state_changed", () => {
-      storage
-        .ref("images")
-        .child(image.name)
-        .getDownloadURL()
-        .then((url) => {
-          db.collection("announcments")
-            .doc("classes")
-            .collection(classData.id)
-            .add({
-              timstamp: firebase.firestore.FieldValue.serverTimestamp(),
-              imageUrl: url,
-              text: inputValue,
-              sender: loggedInMail,
-            });
-        });
-    });
-  };
   return (
     <div className="main">
       <div className="main__wrapper">
