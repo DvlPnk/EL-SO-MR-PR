@@ -6,17 +6,21 @@ import { useLocalContext } from '../../context/context'
 import { Avatar, TextField } from "@material-ui/core"
 import "./style.css";
 import db from "../../lib/firebase";
+import { useStyles } from './style';
+import Theme from "../../assets/Themes"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
 const JoinClass = () => {
   const {
     joinClassDialog,
     setJoinClassDialog,
     loggedInUser,
   } = useLocalContext();
+
+  const classes = useStyles();
+  const colors = Theme(localStorage.getItem("palette"));
 
   const [classCode, setClassCode] = useState("");
   const [email, setemail] = useState("");
@@ -66,14 +70,14 @@ const JoinClass = () => {
         onClose={() => setJoinClassDialog(false)}
         TransitionComponent={Transition}
       >
-        <div className="joinClass">
+        <div style={{ backgroundColor: colors.background_color }} className="joinClass" >
           <div className="joinClass__wrapper">
             <div
               className="joinClass__wrapper2"
               onClick={() => setJoinClassDialog(false)}
             >
-              <Close className="joinClass__svg" />
-              <div className="joinClass__topHead">Entrar a Clase</div>
+              <Close style={{ color: colors.words_color }} className="joinClass__svg" />
+              <div style={{ color: colors.words_color }} className="joinClass__topHead">Entrar a Clase</div>
             </div>
             <Button
               className="joinClass__btn"
@@ -84,15 +88,15 @@ const JoinClass = () => {
               Entrar
             </Button>
           </div>
-          <div className="joinClass__form">
+          <div style={{ backgroundColor: colors.form_background_color }} className="joinClass__form">
             <p className="joinClass__formText">
               Estas actualmente conectado como {loggedInUser?.email}
             </p>
-            <div className="joinClass_loginInfo">
+            <div style={{ color: colors.font_color }} className="joinClass_loginInfo">
               <div className="joinClass_classLeft">
                 <Avatar src={loggedInUser?.photoURL} />
                 <div className="joinClass__loginText">
-                  <div className="joinClass__loginName">
+                  <div className=".joinClass__loginName">
                     {loggedInUser?.displayName}
                   </div>
                   <div className="joinClass__loginEmail">
@@ -105,7 +109,7 @@ const JoinClass = () => {
               </div>
             </div>
           </div>
-          <div className="joinClass__form">
+          <div style={{ backgroundColor: colors.form_background_color }} className="joinClass__form">
             <div style={{ fontSize: '1.25rem', color: "#3c4043" }} className="joinClass__formText">
               Código de Clase
             </div>
@@ -114,6 +118,8 @@ const JoinClass = () => {
             </div>
             <div className="joinClass__loginInfo">
               <TextField
+                className={classes.textfield}
+                InputProps={{ className: classes.input }}
                 id="outlined-basic"
                 label="Codigo de Clase"
                 variant="outlined"
@@ -123,6 +129,8 @@ const JoinClass = () => {
                 helperText={error && "No se encontro la clase"}
               />
               <TextField
+                className={classes.textfield}
+                InputProps={{ className: classes.input }}
                 id="outlined-basic"
                 label="Email del propietario"
                 variant="outlined"
@@ -131,9 +139,9 @@ const JoinClass = () => {
               />
             </div>
           </div>
-        </div>
-      </Dialog>
-    </div>
+        </div >
+      </Dialog >
+    </div >
   )
 };
 

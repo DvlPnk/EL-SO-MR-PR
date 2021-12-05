@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { color } from "@mui/system";
 import Theme from "../../assets/Themes"
 
 const colors = Theme(localStorage.getItem("palette"))
@@ -6,16 +7,7 @@ const colors = Theme(localStorage.getItem("palette"))
 export const useStyles = makeStyles(() => ({
 
   joinClass: {
-    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
-    fontSize: "14px",
-    fontWeight: 400,
-    letterSpacing: "0.2px",
-    lineHeight: "20px",
-    padding: "24px",
-    flexGrow: 2,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    backgroundColor: "##3c4043",
   },
 
   joinClassWrapper: {
@@ -114,5 +106,30 @@ export const useStyles = makeStyles(() => ({
 
   joinClassClassLeft: {
     display: "flex",
+  },
+  textfield: {
+    "& .MuiFormLabel-root": {
+      color: colors.font_color
+    },
+    "& label.Mui-focused": {
+      color: colors.font_color,
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: colors.font_color,
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: colors.font_color,
+      },
+      '&:hover fieldset': {
+        borderColor: colors.font_color,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: colors.font_color,
+      },
+    },
+  },
+  input: {
+    color: colors.font_color
   }
 }));
