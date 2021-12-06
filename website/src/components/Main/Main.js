@@ -5,6 +5,7 @@ import db, { storage } from "../../lib/firebase";
 import "./style.css";
 import firebase from "firebase";
 import { useLocalContext } from "../../context/context";
+import { Announcment } from "..";
 const Main = ({ classData }) => {
   const { loggedInMail } = useLocalContext();
 
@@ -16,6 +17,28 @@ const Main = ({ classData }) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
+  };
+  
+  const handleUpload = () => {
+    const uploadImage = storage.ref(`images/${image.name}`).put(image);
+
+    uploadImage.on("state_changed", () => {
+      storage
+        .ref("images")
+        .child(image.name)
+        .getDownloadURL()
+        .then((url) => {
+          db.collection("announcments")
+            .doc("classes")
+            .collection(classData.id)
+            .add({
+              timstamp: firebase.firestore.FieldValue.serverTimestamp(),
+              imageUrl: url,
+              text: inputValue,
+              sender: loggedInMail,
+            });
+        });
+    });
   };
 
   return (
@@ -67,12 +90,12 @@ const Main = ({ classData }) => {
                       />
 
                       <div>
-                        <Button onClick={() => { setShowInput(false); setInput("") }}>
+                        <Button onClick={() => setShowInput(false)}>
                           Cancelar
                         </Button>
 
                         <Button
-                          /*onClick={handleChange}*/
+                          onClick={handleUpload}
                           color="primary"
                           variant="contained"
                         >
@@ -92,6 +115,7 @@ const Main = ({ classData }) => {
                 )}
               </div>
             </div>
+            <Announcment classData={classData} />
           </div>
         </div>
       </div>
