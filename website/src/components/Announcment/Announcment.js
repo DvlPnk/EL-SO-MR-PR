@@ -2,12 +2,10 @@ import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import db from "../../lib/firebase";
 import "./style.css";
-import { useStyles } from './style'
 import Theme from "../../assets/Themes"
 const Announcment = ({ classData }) => {
   const [announcment, setAnnouncment] = useState([]);
 
-  //const classes = useStyles();
   const colors = Theme(localStorage.getItem("palette"));
 
   useEffect(() => {
