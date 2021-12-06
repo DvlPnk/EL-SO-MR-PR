@@ -86,7 +86,7 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </Router>
-  </div >) : <div>Cargando2</div>);
+  </div >) : <div></div>);
 }
 
 export default App;
