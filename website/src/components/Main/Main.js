@@ -23,12 +23,8 @@ const Main = ({ classData }) => {
       setImage(e.target.files[0]);
     }
   };
-
+ 
   const handleUpload = () => {
-    if (image == null) {
-
-    }
-    else {
       const uploadImage = storage.ref(`images/${image.name}`).put(image);
 
       uploadImage.on("state_changed", () => {
@@ -48,7 +44,6 @@ const Main = ({ classData }) => {
               });
           });
       });
-    }
   };
 
   return (
@@ -75,7 +70,7 @@ const Main = ({ classData }) => {
         </div>
         <div className="main__announce">
           <div style={{ color: colors.font_color, backgroundColor: colors.form_background_color }} className="main__status">
-            <p>Upcoming</p>
+            <p>Proximas entregas</p>
             <p className="main__subText">No tienes trabajos pendientes</p>
           </div>
           <div className="main__announcements">

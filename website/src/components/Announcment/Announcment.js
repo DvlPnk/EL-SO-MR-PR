@@ -1,5 +1,7 @@
 import { Avatar } from "@material-ui/core";
+import { Button } from "@material-ui/core/index";
 import React, { useEffect, useState } from "react";
+import filee from "../../assets/file.png";
 import db from "../../lib/firebase";
 import "./style.css";
 import Theme from "../../assets/Themes"
@@ -31,7 +33,17 @@ const Announcment = ({ classData }) => {
               <div>{item.sender}</div>
             </div>
             <p style={{ color: colors.font_color }} className="amt__txt">{item.text}</p>
-            <img className="amt__img" src={item.imageUrl} alt={item.text} />
+            <img className="amt__img" src={filee} alt={item.text} />
+            <div>
+            <Button
+              href={item.imageUrl}
+              color="primary"
+              variant="contained"
+            >
+              Descargar
+            </Button>
+            </div>  
+            
           </div>
         </div>
       ))}
@@ -40,3 +52,5 @@ const Announcment = ({ classData }) => {
 };
 
 export default Announcment;
+
+//<p style={{ color: colors.font_color }} className="amt__txt">{item.imageUrl}</p>
